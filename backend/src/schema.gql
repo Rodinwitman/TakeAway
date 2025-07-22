@@ -1,0 +1,57 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: ID!
+  email: String!
+  name: String
+  role: Role!
+  createdAt: String!
+  updatedAt: String!
+}
+
+enum Role {
+  ADMIN
+  CUSTOMER
+}
+
+type AuthPayload {
+  access_token: String!
+  user: User!
+}
+
+type Query {
+  users: [User!]!
+  me: User!
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): User!
+  updateUser(id: ID!, input: UpdateUserInput!): User!
+  login(input: LoginInput!): AuthPayload!
+  register(input: RegisterInput!): AuthPayload!
+}
+
+input CreateUserInput {
+  email: String!
+  password: String!
+  name: String!
+  role: String!
+}
+
+input UpdateUserInput {
+  name: String
+  password: String
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+input RegisterInput {
+  email: String!
+  password: String!
+  name: String
+}

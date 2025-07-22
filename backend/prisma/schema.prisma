@@ -6,11 +6,10 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
@@ -18,7 +17,7 @@ model User {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   email       String   @unique
   password    String
-  name        String?
+  name        String?  
   role        Role     @default(CUSTOMER)
   cart        Cart?
   orders      Order[]
@@ -40,6 +39,8 @@ model Product {
   category    Category @relation(fields: [categoryId], references: [id])
   categoryId  String   @db.ObjectId
   inventory   Int
+  cartItems   CartItem[]  // Relation inverse ajoutée
+  orderItems  OrderItem[] // Relation inverse ajoutée
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
