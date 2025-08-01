@@ -1,0 +1,5 @@
+mutation CreateExitPage($input: ExitPageCreateInput!) {
+  createExitPage(input: $input) {
+    ...createExitPageFragment
+  }
+}

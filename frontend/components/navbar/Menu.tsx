@@ -1,22 +1,24 @@
+import Navigation_Menu from "@/components/navbar/Navigation_Menu"
 import { links } from "@/utils/links"
 import Link from "next/link"
 
-const Menu = () => {
-  return (
-    <div>
-        <ul className="flex gap-4 p-4">
-            {
-                links.map((link) => (
-                    <li key={link.href} className="">
-                        <Link href={link.href}>
-                            <p>{link.label}</p>
-                        </Link>
-                    </li>
-                ))
-            }
-        </ul>
-    </div>
-  )
+const Navbar = () => {
+    return (
+        <nav className="flex gap-4 items-center">
+            {/* 1. Lien Accueil */}
+            <Link href={links[0].href}>{links[0].label}</Link>
+
+            {/* 2. Menu déroulant personnalisé */}
+            <Navigation_Menu />
+
+            {/* 3. Les autres liens */}
+            {links.slice(1).map((link) => (
+                <Link key={link.href} href={link.href}>
+                    {link.label}
+                </Link>
+            ))}
+        </nav>
+    )
 }
 
-export default Menu
+export default Navbar

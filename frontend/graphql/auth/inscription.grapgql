@@ -1,0 +1,17 @@
+mutation Connexion($data: ConnexionInput!) {
+  connexion(data: $data) {
+    token
+    user {
+      id
+      email
+      name
+    }
+  }
+}
+
+mutation Inscription($data: InscriptionInput!) {
+  inscription(data: $data) {
+    id
+    name
+  }
+}
